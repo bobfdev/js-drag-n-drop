@@ -1,4 +1,4 @@
-const draggable_list = document.getElementById('draggable_list');
+const draggable_list = document.getElementById('draggable-list');
 const check = document.getElementById('check');
 
 const usCities = [
@@ -24,7 +24,11 @@ createList();
 // Insert list items into DOM
 function createList() {
     [...usCities]
+        .map(a => ({ value: a, sort: Math.random() }))
+        .sort((a, b) => a.sort - b.sort)
+        .map(a => a.value)
         .forEach((city, index) => {
+
             const listItem = document.createElement('li');
 
             listItem.setAttribute('data-index', index);
